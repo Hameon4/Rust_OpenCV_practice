@@ -16,7 +16,7 @@ pub fn func() -> Result<()> {
 
     // Converting to Gaussian Blur 
     let mut img_blur = Mat::default();
-    imgproc::
+    imgproc::gaussian_blur(&img_gray, &mut img_blur, Size, 5.0, 0.0, 0)?;
     
     highgui::imshow("Image", &img)?;
     highgui::imshow("Image Gray", &img_gray)?;
