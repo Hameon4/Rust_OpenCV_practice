@@ -39,7 +39,8 @@ pub fn basic_functions() -> Result<()> {
         3,
         false)?;
 
-    // Erosion (decrease thickness) and Dilation (increase thickness)
+    // Dilation (increase thickness) and Erosion (decrease thickness)
+    // last 4 parameters of both dilate and erode are defaults
     let mut img_dilation = Mat::default();
     let mut img_erosion = Mat::default();
     let kernel = imgproc::get_structuring_element(
