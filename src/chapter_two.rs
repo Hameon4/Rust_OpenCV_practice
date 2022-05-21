@@ -14,8 +14,12 @@ pub fn func() -> Result<()> {
     let mut img_gray = Mat::default();  // decalre a variable of Mat type to be used for conversion
     imgproc::cvt_color(&img, &mut img_gray, imgproc::COLOR_BGR2GRAY, 0)?;   
 
+    // Converting to Gaussian Blur 
+    let mut img_blur = Mat::default();
+    imgproc::
+    
     highgui::imshow("Image", &img)?;
-    highgui::imshow("Gray", &img_gray)?;
+    highgui::imshow("Image Gray", &img_gray)?;
     highgui::wait_key(0)?;
     Ok(())
 }
