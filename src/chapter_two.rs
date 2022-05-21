@@ -6,12 +6,11 @@ use opencv:: {
     imgproc,
     imgcodecs
 };
-use opencv::imgproc::MORPH_TOPHAT;
 
-pub fn func() -> Result<()> {
+pub fn basic_functions() -> Result<()> {
     let path = String::from("Resources/rust_wallpaper.jpg");
     let img = imgcodecs::imread(&path, 1)?;
-    
+
     // Converting to Gray
     let mut img_gray = Mat::default();  // decalre a variable of Mat type to be used for conversion
     imgproc::cvt_color(
@@ -20,7 +19,7 @@ pub fn func() -> Result<()> {
         imgproc::COLOR_BGR2GRAY,
         0)?;
 
-    // Converting to Gaussian Blur 
+    // Converting to Gaussian Blur
     let mut img_blur = Mat::default();
     imgproc::gaussian_blur(
         &img, &mut img_blur,
@@ -45,22 +44,32 @@ pub fn func() -> Result<()> {
     let mut img_erosion = Mat::default();
     let kernel = imgproc::get_structuring_element(
         imgproc::MORPH_RECT,
-        core::Size::from(5, 5),
-        core::Point::from(-1, -1))?;
+        core::Size::from((5, 5)),
+        core::Point::from((-1, -1)))?;
     imgproc::dilate(
         &img_canny,
         &mut img_dilation,
         &kernel,
-        core::Point::from(-1, -1),
+        core::Point::from((-1, -1)),
         1,
         core::BORDER_CONSTANT,
-        imgproc::morphology_default_border_value().unwrap())?;
-    
+        imgproc::morphology_default_border_value()?)?;
+
+    imgproc::erode(
+        &img_dilation,
+        &mut img_erosion,
+        &kernel,
+        core::Point::from((-1, -1)),
+        1,
+        core::BORDER_CONSTANT,
+        imgproc::morphology_default_border_value()?)?;
+
     highgui::imshow("Image", &img)?;
     highgui::imshow("Image Gray", &img_gray)?;
     highgui::imshow("Image Blur", &img_blur)?;
     highgui::imshow("Image Canny", &img_canny)?;
     highgui::imshow("Image Dilation", &img_dilation)?;
+    highgui::imshow("Image Erosion", &img_erosion)?;
     highgui::wait_key(0)?;
     Ok(())
 }
