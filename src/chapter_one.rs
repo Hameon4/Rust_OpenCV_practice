@@ -10,7 +10,7 @@ use opencv:: {
 #[allow(dead_code)]
 pub fn read_image() -> Result<()> {
     let path = String::from("Resources/rust_wallpaper.jpg");
-    let img = imgcodecs::imread(&path, 1)?;
+    let img = imgcodecs::imread(&path, imgcodecs::IMREAD_COLOR)?;
     highgui::imshow("Image", &img)?;
     highgui::wait_key(0)?;
     Ok(())
