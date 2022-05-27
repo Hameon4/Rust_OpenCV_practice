@@ -26,7 +26,7 @@ pub fn read_video() -> Result<()> {
         cap.read(&mut img)?;
         highgui::imshow("Video", &img)?;
         let key = highgui::wait_key(1)?;
-        if key == 113 { 
+        if key == 113 { // 113 = 'q'
             break;
         }
     }
