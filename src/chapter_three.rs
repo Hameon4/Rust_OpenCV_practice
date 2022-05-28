@@ -7,7 +7,7 @@ use opencv:: {
     imgcodecs
 };
 
-pub fn main() -> Result<()> {
+pub fn resize_and_crop() -> Result<()> {
     let path = String::from("Resources/rust_wallpaper.jpg");
     let img = imgcodecs::imread(&path, 1)?;
 

@@ -7,5 +7,5 @@ fn main() {
     //chapter_one::read_video().expect("Some Error Happened");
     //chapter_one::read_webcam().expect("Some Error Happened");
     //chapter_two::basic_functions().expect("Some Error Happened");
-    chapter_three::main().unwrap();
+    chapter_three::resize_and_crop().unwrap();
 }
