@@ -23,6 +23,7 @@ pub fn main() -> Result<()> {
     //Image Size: Ok(Size_ { width: 728, height: 409 })
 
     // Cropping an image
+    // roi ~ 'Region of Interest'
     let roi = core::Rect::new(100, 100, 300, 250);
     let img_crop = Mat::roi(&img, roi)?;
 
