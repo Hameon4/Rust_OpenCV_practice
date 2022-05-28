@@ -24,7 +24,7 @@ pub fn main() -> Result<()> {
 
     // Cropping an image
     // roi ~ 'Region of Interest'
-    let roi = core::Rect::new(100, 100, 300, 250);
+    let roi = core::Rect::new(200, 50, 300, 300);
     let img_crop = Mat::roi(&img, roi)?;
 
 
