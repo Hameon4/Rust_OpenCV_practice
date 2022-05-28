@@ -7,16 +7,29 @@ use opencv:: {
     imgcodecs
 };
 
-#[allow(dead_code)]
-pub fn basic_functions() -> Result<()> {
+pub fn main() -> Result<()> {
     let path = String::from("Resources/rust_wallpaper.jpg");
     let img = imgcodecs::imread(&path, 1)?;
 
-    //Resize
-    let img_resize = Mat::default();
-    imgproc::
+    // Resizing an image
+    let mut img_resize = Mat::default();
+    imgproc::resize(
+        &img,
+        &mut img_resize,
+        core::Size::default(),
+        0.5, 0.5,
+        imgproc::INTER_LINEAR)?;
+    //println!("Image Size: {:?}", img.size());
+    //Image Size: Ok(Size_ { width: 728, height: 409 })
+
+    // Cropping an image
+    let roi = core::Rect::new(100, 100, 300, 250);
+    let img_crop = Mat::roi(&img, roi)?;
+
 
     highgui::imshow("Image", &img)?;
+    highgui::imshow("Resized Image", &img_resize)?;
+    highgui::imshow("Cropped Image", &img_crop)?;
     highgui::wait_key(0)?;
     Ok(())
 }
