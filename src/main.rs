@@ -8,6 +8,6 @@ fn main() {
     //chapter_one::read_video().expect("Some Error Happened");
     //chapter_one::read_webcam().expect("Some Error Happened");
     //chapter_two::basic_functions().expect("Some Error Happened");
-    //chapter_three::resize_and_crop().unwrap();
-    chapter_four::draw_shapes().unwrap();
+    //chapter_three::resize_and_crop().expect("Some Error Happened");
+    chapter_four::draw_shapes().expect("Some Error Happened");
 }

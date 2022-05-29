@@ -4,7 +4,6 @@ use opencv:: {
     core,
     highgui,
     imgproc,
-    imgcodecs
 };
 
 pub fn draw_shapes() -> Result<()> {
