@@ -17,7 +17,8 @@ pub fn resize_and_crop() -> Result<()> {
         &img,
         &mut img_resize,
         core::Size::default(),
-        0.5, 0.5,
+        0.5,
+        0.5,
         imgproc::INTER_LINEAR)?;
     //println!("Image Size: {:?}", img.size());
     //Image Size: Ok(Size_ { width: 728, height: 409 })
