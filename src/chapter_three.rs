@@ -9,7 +9,7 @@ use opencv:: {
 
 pub fn resize_and_crop() -> Result<()> {
     let path = String::from("Resources/rust_wallpaper.jpg");
-    let img = imgcodecs::imread(&path, 1)?;
+    let img = imgcodecs::imread(&path, imgcodecs::IMREAD_COLOR)?;
 
     // Resizing an image
     let mut img_resize = Mat::default();

@@ -9,7 +9,7 @@ use opencv:: {
 
 pub fn basic_functions() -> Result<()> {
     let path = String::from("Resources/rust_wallpaper.jpg");
-    let img = imgcodecs::imread(&path, 1)?;
+    let img = imgcodecs::imread(&path, imgcodecs::IMREAD_COLOR)?;
 
     // Converting to Gray
     let mut img_gray = Mat::default();  // decalre a variable of Mat type to be used for conversion

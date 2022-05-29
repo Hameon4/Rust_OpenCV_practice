@@ -1,6 +1,8 @@
 //mod chapter_one;
 //mod chapter_two;
 mod chapter_three;
+mod chapter_four;
+mod chapter_two;
 
 fn main() {
     //chapter_one::read_image().expect("Some Error Happened");
