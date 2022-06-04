@@ -9,5 +9,5 @@ fn main() {
     //chapter_one::read_webcam().expect("Some Error Happened");
     //chapter_two::basic_functions().expect("Some Error Happened");
     //chapter_three::resize_and_crop().expect("Some Error Happened");
-    chapter_four::draw_shapes().expect("Some Error Happened");
+    chapter_four::draw_shapes().expect("Some Error Happened")
 }
