@@ -18,7 +18,7 @@ pub fn warp_perspective() -> Result<()> {
     let p2 = core::Point2f::from((771.0, 190.0));
     let p3 = core::Point2f::from((405.0, 395.0));
     let p4 = core::Point2f::from((674.0, 457.0));
-    let src = vec![p1, p2, p3, p4]; // error
+    let src= core:
     let w = 250.0;
     let h = 350.0;
    // let dst = core::Point2f::from((0.0, 0.0), (w, 0.0), (0.0, h), (w, h)); // error
@@ -27,7 +27,8 @@ pub fn warp_perspective() -> Result<()> {
     let q2 = core::Point2f::from((w, 0.0));
     let q3 = core::Point2f::from((0.0, h));
     let q4 = core::Point2f::from((w, h));
-    let dst = vec![q1, q2, q3, q4];
+    let dst = Mat::default();
+    dst.add((q1, q2, q3, q4));
 
     let mut img_warp = Mat::default();
     let matrix = imgproc::get_perspective_transform(&src, &dst, core::DECOMP_LU)?;
