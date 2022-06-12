@@ -34,12 +34,12 @@ pub fn warp_perspective() -> Result<()> {
     let dst = types::VectorOfPoint2f::from(v_dst);
 
     let mut img_warp = Mat::default();
-    let matrix = imgproc::get_perspective_transform(&src, &dst, core::DECOMP_LU)?;
+    let matrix = imgproc::get_perspective_transform(&src, &dst, core::DECOMP_LU);
     imgproc::warp_perspective(
         &img,
         &mut img_warp,
         &matrix,
-        core::Size::from((250, 350)),
+        core::Size::from((w as i32, h as i32)),
         imgproc::INTER_LINEAR,
         core::BORDER_CONSTANT,
         core::Scalar::default()
