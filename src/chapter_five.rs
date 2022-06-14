@@ -13,10 +13,10 @@ pub fn warp_perspective() -> Result<()> {
     let img = imgcodecs::imread(&path, imgcodecs::IMREAD_COLOR)?;
 
     let v_src = vec![
-        core::Point2f::from((529.0, 142.0)),
-        core::Point2f::from((771.0, 190.0)),
-        core::Point2f::from((405.0, 395.0)),
-        core::Point2f::from((674.0, 457.0)),
+        core::Point2f::from((748.0, 384.0)),
+        core::Point2f::from((1021.0, 437.0)),
+        core::Point2f::from((647.0, 709.0)),
+        core::Point2f::from((965.0, 781.0)),
     ];
 
     let w = 250.0;
