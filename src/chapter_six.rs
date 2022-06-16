@@ -1,5 +1,5 @@
 use anyhow::Result;
-use opencv::{imgcodecs, highgui, imgproc, core, prelude::*};
+use opencv::{imgcodecs, highgui, imgproc, core, prelude::*, types};
 
 pub fn color_detection() -> Result <()> {
     let path = String::from("Resources/lambo.png");
@@ -13,10 +13,9 @@ pub fn color_detection() -> Result <()> {
 
     imgproc::cvt_color( &img, &mut img_hsv, imgproc::COLOR_BGR2HSV, 0)?;
     // inrange used to collect the color
-    let vlower = core::VecN::from((hmin, smin, vmin));
-    let vupper = core::VecN::from((hmax, smax, vmax));
-    let lower = core::Scalar::from((vlower));
-    let upper = core::Scalar::from((vupper));
+    let v_lower = vec![core::Scalar::from((hmin))];
+    let lower = types::VectorOfScalar::from(v_lower);
+    let upper = core::Scalar::from((hmax, smax, vmax));
     core::in_range(&img_hsv, &lower, &upper, &mut mask)?;
 
     highgui::imshow("Image", &img)?;
