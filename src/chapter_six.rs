@@ -1,6 +1,7 @@
 use anyhow::Result;
 use opencv::{imgcodecs::*, highgui::*, imgproc::*, prelude::*, core::*};
-use opencv::highgui::TrackbarCallback;
+use std::ptr;
+use std::ptr::null_mut;
 
 pub fn color_detection() -> Result <()> {
     let path = String::from("Resources/lambo.png");
@@ -13,14 +14,25 @@ pub fn color_detection() -> Result <()> {
     let mut h_max = 19; let mut s_max = 240; let mut v_max = 255;
 
     cvt_color( &img, &mut img_hsv, COLOR_BGR2HSV, 0)?;
-
     named_window("Trackbars", WINDOW_AUTOSIZE)?;
-    create_trackbar("Hue Min", "Trackbars", Some(&mut h_min), 179, None)?;
-    create_trackbar("Hue Max", "Trackbars", Some(&mut h_max), 179, None)?;
-    create_trackbar("Sat Min", "Trackbars", Some(&mut s_min), 255, None)?;
-    create_trackbar("Sat Max", "Trackbars", Some(&mut s_max), 255, None)?;
-    create_trackbar("Val Min", "Trackbars", Some(&mut v_min), 255, None)?;
-    create_trackbar("Val Max", "Trackbars", Some(&mut v_max), 255, None)?;
+
+    create_trackbar("Hue Min", "Trackbars", Some(&mut ptr::null()), 179, None)?;
+    set_trackbar_pos("Hue Min", "Trackbars", h_min)?;
+
+    create_trackbar("Hue Max", "Trackbars", Some(&mut ptr::null()), 179, None)?;
+    set_trackbar_pos("Hue Max", "Trackbars", h_max)?;
+
+    create_trackbar("Sat Min", "Trackbars", Some(&mut ptr::null()), 255, None)?;
+    set_trackbar_pos("Sat Min", "Trackbars", s_min)?;
+
+    create_trackbar("Sat Max", "Trackbars", Some(&mut ptr::null()), 255, None)?;
+    set_trackbar_pos("Sat Max", "Trackbars", s_max)?;
+
+    create_trackbar("Val Min", "Trackbars", Some(&mut ptr::null()), 255, None)?;
+    set_trackbar_pos("Val Min", "Trackbars", v_min)?;
+
+    create_trackbar("Val Max", "Trackbars", Some(&mut ptr::null()), 255, None)?;
+    set_trackbar_pos("Val Max", "Trackbars", v_max)?;
     loop {
         // inrange() used to collect the color
         let lower = Scalar::from((h_min as f64, s_min as f64, v_min as f64));
