@@ -1,5 +1,5 @@
 use anyhow::Result;
-use opencv:: {prelude::*,imgproc,imgcodecs,highgui,core,types};
+use opencv:: {prelude::*, imgproc, imgcodecs, highgui, core, types};
 
 pub fn warp_perspective() -> Result<()> {
     let path = String::from("Resources/cards.jpg");

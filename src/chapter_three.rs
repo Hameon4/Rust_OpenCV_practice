@@ -1,11 +1,5 @@
 use anyhow::Result;
-use opencv:: {
-    prelude::*,
-    core,
-    highgui,
-    imgproc,
-    imgcodecs
-};
+use opencv:: {prelude::*, core, highgui, imgproc, imgcodecs};
 
 pub fn resize_and_crop() -> Result<()> {
     let path = String::from("Resources/rust_wallpaper.jpg");

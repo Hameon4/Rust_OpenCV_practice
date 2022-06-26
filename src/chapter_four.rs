@@ -1,10 +1,5 @@
 use anyhow::Result;
-use opencv:: {
-    prelude::*,
-    core,
-    highgui,
-    imgproc,
-};
+use opencv:: {prelude::*, core, highgui, imgproc,};
 
 pub fn draw_shapes() -> Result<()> {
     // blank image

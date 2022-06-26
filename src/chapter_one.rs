@@ -1,9 +1,5 @@
 use anyhow::Result;
-use opencv:: {
-    videoio,
-    highgui,
-    imgcodecs,
-};
+use opencv:: {prelude::*, videoio, highgui, imgcodecs};
 
 // -->  READ IMAGE FILE <--
 #[allow(dead_code)]
